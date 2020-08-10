@@ -1,0 +1,9 @@
+<ion-menu [content]="content" enabled="false" id="user-menu" [class]="currentTheme">
+    <user-menu [user]="currentUser" [uid]="currentUserUid"></user-menu>
+</ion-menu>
+
+<ion-menu [content]="content" enabled="false" id="menu-admin" >
+    <menu-admin [user]="currentUser"></menu-admin>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage" [class]="currentTheme" [id]="ionNavId"></ion-nav>

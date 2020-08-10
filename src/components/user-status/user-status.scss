@@ -1,0 +1,72 @@
+user-status {
+
+    .item-inner {
+        margin-left: 2px !important;
+    }
+
+    .list-ios{
+        margin-bottom: 10px;
+    }
+
+    #hp.progress-outer {
+        width: 96%;
+        margin: 10px 2%;
+        padding: 3px;
+        text-align: center;
+        background-color: #f4f4f4;
+        border: 1px solid #dcdcdc;
+        color: #fff;
+        border-radius: 20px;
+
+        .progress-inner {
+            min-width: 0%;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px;
+            border-radius: 20px;
+            background-color: map-get($colors, danger);
+        }
+    }
+
+    #xp.progress-outer {
+        width: 96%;
+        margin: 10px 2%;
+        padding: 3px;
+        text-align: center;
+        background-color: #f4f4f4;
+        border: 1px solid #dcdcdc;
+        color: #fff;
+        border-radius: 20px;
+
+        .progress-inner {
+            min-width: 0%;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px;
+            border-radius: 20px;
+            background-color: map-get($colors, xp);
+        }
+    }
+ 
+    
+    #icone{
+        font-size:100px;
+        margin-left:40%;
+    }
+
+    ion-item {
+        background-color: rgba(0, 0, 0, 0) !important;
+        #icone-dinheiro {
+            padding-right: 15px;
+            padding-left: 10px;
+        }
+        height: 30px;
+    }
+
+    ion-icon.icon-atributo {
+        text-shadow: 2px 2px 2px #444;
+    }
+
+}

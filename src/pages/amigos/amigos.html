@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Amigos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSolicitacoesModal()">
+        <ion-icon name="contacts"></ion-icon>
+        <div *ngIf="solicitacoes && solicitacoes.length > 0">
+          <div class="solicitacoes"></div>
+        </div>
+      </button>
+    </ion-buttons>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let amigo of (amigos | async)">
+      <amigo [amigo]="amigo" (click)="onClickAmigo(amigo)"></amigo>
+  </ion-list>
+</ion-content>
+
+<ion-fab bottom right>
+  <button ion-fab (click)="addAmigos()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

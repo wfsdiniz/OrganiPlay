@@ -1,0 +1,98 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      {{mundo.mundo}}
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="view">
+      <ion-segment-button value="tarefas">
+        Tarefas
+      </ion-segment-button>
+      <ion-segment-button value="jogadores">
+        Jogadores
+      </ion-segment-button>
+      <ion-segment-button value="recompensas">
+        Recompensas
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-toolbar>
+
+  <ion-toolbar style="padding: 0px;">
+    <ion-item style="background-color: transparent;" no-lines>
+      <ion-searchbar placeholder="Pesquisar" (ionInput)="filterItens($event)" *ngIf="view == 'tarefas'"></ion-searchbar>
+      <button item-end ion-fab (click)="addTarefa()" *ngIf="view == 'tarefas'">
+        <ion-icon name="add"></ion-icon>
+      </button>
+
+      <ion-searchbar placeholder="Pesquisar" (ionInput)="filterItens($event)" *ngIf="view == 'jogadores'"></ion-searchbar>
+      <button placeholder="Pesquisar" item-end ion-fab (click)="addUsuarios()" *ngIf="view == 'jogadores'">
+        <ion-icon name="add"></ion-icon>
+      </button>
+
+      <ion-searchbar placeholder="Pesquisar" (ionInput)="filterItens($event)" *ngIf="view == 'recompensas'"></ion-searchbar>
+      <button placeholder="Pesquisar" item-end ion-fab (click)="addRecompensa()" *ngIf="view == 'recompensas'">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div [ngSwitch]="view">
+
+    <div *ngSwitchCase="'tarefas'" class="tarefas">
+      <ion-list id="no-detail">
+        <button *ngFor="let tarefa of (tarefas | async)" ion-item (click)="onClickTarefa(tarefa)" [ngClass]="{'riscado': tarefa.finalizado}"
+          (press)="showActionSheetTarefa(tarefa)">
+          <ion-icon class="main-icon" [name]="tarefa.icon" icon-only item-start *ngIf="tarefa.icon"></ion-icon>
+          <h2>{{tarefa.afazer}}</h2>
+          <h2 *ngIf="tarefa.dataFim">
+            <ion-icon name="calendar" icon-only large></ion-icon> {{tarefa.dataFim | date: 'dd/MM/yyyy'}}
+          </h2>
+          <p *ngIf="tarefa.descricao">{{tarefa.descricao}}</p>
+        </button>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'jogadores'">
+      <ion-list *ngIf="playersList">
+        <button ion-item *ngFor="let player of (playersList | async)" (press)="showActionSheetPlayer(player)">
+          <ion-avatar item-start>
+            <img class="round" [src]="player.settings.currentAvatar || 'assets/imgs/no-photo.jpg'">
+          </ion-avatar>
+          <h2>{{player.username}}</h2>
+          <p>{{player.name}}</p>
+        </button>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'recompensas'">
+      <ion-list *ngIf="recompensasList">
+        <div *ngFor="let recompensa of (recompensasList | async)">
+          <button ion-item (click)="onClickRecompensa(recompensa)">
+            <ion-icon *ngIf="!recompensa.photoUrl" [name]="recompensa.icon" item-start></ion-icon>
+            <ion-avatar item-start *ngIf="recompensa.photoUrl">
+              <img class="round" [src]="recompensa.photoUrl">
+            </ion-avatar>
+            <h2>{{recompensa.recompensa}}</h2>
+            <p>{{recompensa.descricao}}</p>
+            <ion-icon class="icon tarefa" name="list" large *ngIf="recompensa.afazer" item-end></ion-icon>
+            <ion-icon class="icon moedas" name="cash" large *ngIf="recompensa.moedas" item-end></ion-icon>
+            <ion-icon class="icon gemas" name="snow" large *ngIf="recompensa.gemas" item-end></ion-icon>
+            <ion-icon class="icon dinheiro" name="cash" large *ngIf="recompensa.dinheiro" item-end></ion-icon>
+            <ion-icon class="icon podium" name="podium" large *ngIf="recompensa.nivel" item-end></ion-icon>
+          </button>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

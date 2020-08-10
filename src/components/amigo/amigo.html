@@ -1,0 +1,24 @@
+<button ion-item>
+  <ion-avatar item-start (click)="onClickAvatar()">
+    <img [src]="amigo.settings.currentAvatar || 'assets/imgs/no-photo.jpg'">
+  </ion-avatar>
+  <div>
+    <ion-grid>
+      <ion-row><h2>{{amigo.username}}</h2></ion-row>
+      <ion-row align-items-start>
+        <ion-col col-1 align-self-end>
+          <ion-icon name="heart" color="danger"></ion-icon>
+        </ion-col>
+        <ion-col col-8 align-self-end>
+          <div class="progress-outer" id="hp">
+            <div class="progress-inner" [style.width]="getHPPorcentagem(amigo.status.xp, amigo.status.hp) + '%'">
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-3 align-self-end text-right>
+          <span class="text">lvl. {{ getNivel(amigo.status.xp) }} </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</button>

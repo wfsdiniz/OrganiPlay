@@ -1,0 +1,67 @@
+<ion-header>
+  <admin-header></admin-header>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="view">
+      <ion-segment-button value="users">
+        Usuários
+      </ion-segment-button>
+      <ion-segment-button value="mundos">
+        Mundos
+      </ion-segment-button>
+      <ion-segment-button value="loja">
+        Loja
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="filterItens($event)"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div [ngSwitch]="view">
+    <ion-list *ngSwitchCase="'users'">
+
+      <div *ngFor="let user of (users | async)">
+        <button ion-item (click)="onUserClick(user)" detail-push>
+          <ion-avatar item-start>
+            <img class="round" [src]="user.settings.currentAvatar || 'assets/imgs/no-photo.jpg'">
+          </ion-avatar>
+          <h2>{{user.name}}</h2>
+          <p>{{user.email}}</p>
+        </button>
+
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'mundos'">
+      <button ion-item *ngFor="let mundo of (mundos | async)" (click)="onMundoOpen(user)">
+        {{mundo.name}}
+      </button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'loja'">
+      
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<div [ngSwitch]="view">
+  <ion-fab bottom right>
+    <button ion-fab (click)="addUsuario()" *ngSwitchCase="'users'">
+      <ion-icon name="add"></ion-icon>
+    </button>
+
+    <button ion-fab (click)="addMundo()" *ngSwitchCase="'mundos'">
+      <ion-icon name="add"></ion-icon>
+    </button>
+
+    <button ion-fab (click)="addItemLoja()" *ngSwitchCase="'loja'">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</div>

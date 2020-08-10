@@ -1,0 +1,84 @@
+.pink-theme {
+	
+	//cor de destaque
+	.primary {
+	}
+	button.primary{
+		border-color: #333;
+		color: #333;
+	}
+
+	//cor secundária
+	.secondary {
+		color:#ffffff;
+	}
+
+	// conteúdo
+	ion-content {
+		background-color: #F5C7C9;
+		color: #333;
+	}
+	
+	//Fonte toolbar
+	.toolbar-title {
+		color: #333;
+	}
+	
+	//Header
+	.header .toolbar-background {
+		border-color: #333;
+		background-color: #FA9A82;
+	}
+
+	//Tabs bar
+	.tabbar {
+		background-color: #FA9A82 !important;
+		
+		ion-icon {
+			color: #333;			
+		}
+		.tab-button {
+			color: #333;
+		}
+
+		
+	}
+
+	//Botões
+	button {
+		color: #333;
+	}
+	
+	//Background ion-item
+	.item .item-content {
+		background-color: transparent !important;
+	}
+	
+	//Cor dos textos
+	span.text {
+		color: #333;
+	}
+
+	//cor das gemas
+	.op-diamond {
+
+	}
+
+	//cor das moedas
+	.op-coins {
+
+	}
+
+	//cor da fonte nos inputs
+	input {
+		color: #333;
+	}
+
+	.habito-list {
+		h2 {
+			color: #333 !important;
+		}
+	}
+	
+  
+  } 

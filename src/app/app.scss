@@ -1,0 +1,83 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+#ion-nav {
+  ion-navbar{
+    padding-top: 25px !important;
+  }
+}
+
+.bar-button-menutoggle-md {
+  margin: 0px !important;
+}
+
+ion-icon {
+  &[class*="op-"] {
+      // Instead of using the font-based icons
+      // We're applying SVG masks
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+  }
+  // custom icons
+  &[class*="op-coins"] {
+      mask-image: url(../assets/icons/op-coins.svg);
+  }
+  &[class*="op-diamond"] {
+      mask-image: url(../assets/icons/op-diamond.svg);
+  }
+}
+
+$icon-detail-push-background-svg:    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z' fill='fg-color'/></svg>" !default;
+$item-md-detail-push-color:          $list-md-border-color !default;
+
+@mixin md-detail-push-icon($fg-color) {
+  $svg: str-replace($icon-detail-push-background-svg, 'fg-color', $fg-color);
+  @include svg-background-image($svg);
+}
+
+button.item:not([detail-none]) .item-inner,
+a.item:not([detail-none]) .item-inner,
+.item[detail-push] .item-inner {
+  @include md-detail-push-icon($item-md-detail-push-color);
+  background-repeat: no-repeat;
+  background-position: right (15px - 2) center;
+  background-size: 14px 14px;
+  padding-right: 32px;
+}
+
+  ion-toolbar.toolbar-ios {
+    padding-top: 15px;
+
+    button {
+      margin-bottom: 10px;
+    }
+  }
+
+  .toolbar-ios .segment-ios {
+    top: 15px;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.5) !important;
+  padding: 20% 10%  !important;
+}
+
+span.text {
+  color: #333333;
+}

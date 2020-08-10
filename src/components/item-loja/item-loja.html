@@ -1,0 +1,32 @@
+<ion-card>
+  <img [src]="itemLoja.imgURL" (click)="onClickImage(itemLoja.imgURL)"/>
+  <ion-card-content>
+    <ion-card-title class="card-text">
+      <span class="text">{{itemLoja.nome}}</span>
+    </ion-card-title>
+    <p>
+      <span class="text">{{itemLoja.descricao}} <span *ngIf="itemLoja.revive">Pode reviver seus amigos.</span></span>
+    </p>
+
+    <ion-item>
+      <ion-icon item-start name="op-coins" color="xp" class="op-coins">.</ion-icon>
+      <div class="card-text">{{itemLoja.moedas}}</div>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon item-start name="op-diamond" color="gems" class="op-diamond">....</ion-icon>
+      <div class="card-text">{{itemLoja.gemas}}</div>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon item-start name="star" color="xp" class="xp-bar"></ion-icon>
+      <div class="card-text">lvl. {{itemLoja.nivel}}</div>
+    </ion-item>
+
+   
+    <div text-right>
+      <button ion-button *ngIf="!isComprado" (click)="onClickComprar()">Comprar</button>
+      <button ion-button color="btnUsar" *ngIf="isComprado" [disabled]="isUsando" (click)="onClickUsar()">Usar</button>
+    </div>
+  </ion-card-content>
+</ion-card>
